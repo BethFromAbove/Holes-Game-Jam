@@ -1,0 +1,51 @@
+Black Hole game
+
+1. We are the black hole
+
+eating everything
+getting bigger/grav pull or scoring points
+How do you die?
+How do you win?
+
+
+2. Avoid the black holes
+You are the rocket ship
+Collect astronaughts floating in space
+Avoid planets
+Could be being chased by sentient black hole?
+Or black holes are randomly around the path, muts be avoided
+Game gets faster every 100 points, harder to avoid to avoid black holes
+
+Assets:
+Rocket
+Particle effects on bottom of the rocket
+black hole sprite
+Astronaughts
+Planets x 4
+Background
+Logo? (Astronaught falling into black hole?)
+
+
+Coding:
+Camera following only up
+tile map? Infinite/looping background?
+Add particle effects to rocket and have them follow
+add loading screen and options menu
+make github repo
+Add game end screen
+Add points counter persists
+make it go faster at higher points
+
+
+stretch goal: add extra gravity to black holes (see 'we are black hole')
+Highscore leader board
+Choose rocket colour
+make points look clock font
+
+Could make both quite easily!
+
+Use actual picture of black hole!
+Make our own sprite of the black hole!
+black could expand or change colour slightly
+
+or classic cartoon black hole?
