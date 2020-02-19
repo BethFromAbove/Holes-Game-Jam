@@ -58,6 +58,7 @@ TODO:
 Make it go faster at higher points- playtesting
 Add background for Title page
 Particle effects for rocket
+Track individual high scores
 
-Add ship naming screen
+Add ship naming screen plus choose colour
 add gravity to black holes

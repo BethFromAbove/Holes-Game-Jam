@@ -76,9 +76,9 @@ export default class PreloaderScene extends Phaser.Scene {
         // load assets needed in our game
         this.load.image('Button', 'assets/silverbutton.png');
         this.load.image('ButtonPressed', 'assets/silverbuttonpressed.png');
-        this.load.image('box', 'assets/checkbox.png');
-        this.load.image('checkedBox', 'assets/checkbox-ticked.png');
-        this.load.image('Logo', 'assets/star.png');
+        this.load.image('box', 'assets/planet6.png');
+        this.load.image('checkedBox', 'assets/checked1.png');
+        this.load.image('Logo', 'assets/logo.png');
         
 
         this.load.audio('bgMusic', ['assets/BitQuest.mp3']);
@@ -89,8 +89,12 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.image('astro', 'assets/astro.png');
         this.load.image('hole', 'assets/blackhole.png');
         this.load.image('rocket', 'assets/rocket1.png');
+        this.load.image('menuBG', 'assets/menubackground.png');
+        this.load.image('aboutBG', 'assets/AboutPage.png');
 
-        this.load.image('background', 'assets/BackgroundTemp.png');
+
+
+        this.load.image('background', 'assets/gamebackground.png');
         this.load.image('planet', 'assets/planet.png');
         this.load.image('planet1', 'assets/planet1.png');
         this.load.image('planet2', 'assets/planet2.png');

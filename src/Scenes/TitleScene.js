@@ -12,7 +12,7 @@ export default class TitleScene extends Phaser.Scene {
 	create () {
 		var config = this.game.config;
 
-        this.add.image(config.width/2, config.height/2, 'titleBackground');
+        this.add.image(config.width/2, config.height/2, 'menuBG');
 
         this.add.image(config.width*0.3, config.height/2, 'Logo');
 

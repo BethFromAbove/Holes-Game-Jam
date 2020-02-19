@@ -60,10 +60,11 @@ export default class GameScene extends Phaser.Scene {
 
     planets = this.physics.add.group();
 
-    //planets.create(100, 0, 'planet1');
-    //planets.create(200, 0, 'planet2');
-    //planets.create(300, 0, 'planet3');
-    //planets.create(400, 0, 'planet4');
+    planets.create(150, 0, 'planet');    
+    planets.create(100, 0, 'planet1');
+    planets.create(200, 0, 'planet2');
+    planets.create(300, 0, 'planet3');
+    planets.create(400, 0, 'planet4');
     planets.create(500, 0, 'planet5');
     planets.create(600, 0, 'planet6');
     planets.create(700, 0, 'planet7');
