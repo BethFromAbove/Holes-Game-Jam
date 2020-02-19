@@ -249,6 +249,9 @@ function hitHole (player, hole)
     player.anims.play('turn');
 
     gameOver = true;
+
+    //var popup = this.add.image(config.width/2, config.height/2, 'planet')
+    //this.add.text(config.width/4 + 10, config.height*0.2, 'Civilisation has crumbled', { fontSize: '25px', fill: '#000' });
 }
 
 
