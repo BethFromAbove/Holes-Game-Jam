@@ -9,13 +9,12 @@ var score = 0;
 var gameOver = false;
 var scoreText;
 
-var starfield;
 var planets;
 var blackHoles;
+var background;
 
 var emitter;
 var menuButton;
-var triangle;
 var trilength;
 var square;
 
@@ -34,53 +33,16 @@ export default class GameScene extends Phaser.Scene {
 
 
         //  The scrolling starfield background
-        starfield = this.add.tileSprite(400, 300, 800, 600, 'background');
+        background = this.add.tileSprite(400, 300, 801, 4046, 'background');
 
 
-        // menuButton = this.add.image(config.width*0.25, config.height-50, 'Button');
-        // menuButton.setInteractive();
-        // menuButton.on('pointerdown', function(){
-        //     earthTime = 0;
-        //     previousTime = 0;
-        //     startTime = 0;
-        //     hasLaunched = false;
-        //     speed = 0;
-        //     this.scene.start('Title');
-        // }.bind(this));
-        // menuButton.on('pointerover', function() {
-        //     menuButton.setTexture('ButtonPressed');
-        // }.bind(this));
-        // menuButton.on('pointerout', function () {
-        //     menuButton.setTexture('Button');
-        // }.bind(this));
-        // var MenuButtonText = this.add.text(config.width*0.2, config.height-70, 'Menu', { fontSize: '32px', fill: '#000' });
+        
     
     // The player and its settings
-    //player = this.physics.add.sprite(500, 450, 'dude');
     player = this.physics.add.image(500, 450, 'rocket');
 
     player.setCollideWorldBounds(true);
 
-    //  Player animations, turning, walking left and walking right.
-    // this.anims.create({
-    //     key: 'left',
-    //     frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-    //     frameRate: 10,
-    //     repeat: -1
-    // });
-
-    // this.anims.create({
-    //     key: 'turn',
-    //     frames: [ { key: 'dude', frame: 4 } ],
-    //     frameRate: 20
-    // });
-
-    // this.anims.create({
-    //     key: 'right',
-    //     frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-    //     frameRate: 10,
-    //     repeat: -1
-    // });
 
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
@@ -96,24 +58,34 @@ export default class GameScene extends Phaser.Scene {
         velocityY: gameSpeed
     });
 
-    planets = this.physics.add.group({
-        key: 'planet',
-        repeat: 3,
-        setXY: { x: 100, y: 0, stepX: 150 , stepY: 150},
-        immovable: true,
-        velocityY: gameSpeed
-    });
+    planets = this.physics.add.group();
 
+    //planets.create(100, 0, 'planet1');
+    //planets.create(200, 0, 'planet2');
+    //planets.create(300, 0, 'planet3');
+    //planets.create(400, 0, 'planet4');
+    planets.create(500, 0, 'planet5');
+    planets.create(600, 0, 'planet6');
+    planets.create(700, 0, 'planet7');
+    planets.create(800, 0, 'planet8');
+
+
+    planets.children.iterate(function(planet){
+        planet.body.immovable = true;
+        planet.setVelocityY(gameSpeed);
+        //planet.setCircle(44);
+    });
+    
     blackHoles = this.physics.add.group({
         key: 'hole',
         repeat: 1,
         setXY: { x: 100, y: 0, stepX: 150 , stepY: 150},
         velocityY: gameSpeed/2
+
     });
     
     trilength = 50;
-    triangle = new Phaser.Geom.Triangle(player.x, player.y, player.x-trilength, player.y+trilength, player.x+trilength, player.y+trilength);
-    square = new Phaser.Geom.Rectangle(player.x-trilength, player.y, trilength*2, trilength*2);
+    square = new Phaser.Geom.Rectangle(player.x-trilength, player.y+30, trilength*2, trilength*2);
 
     var particles = this.add.particles('bluedot');
 
@@ -126,6 +98,7 @@ export default class GameScene extends Phaser.Scene {
             scale: { start: 0.05, end: 0.1 },
             blendMode: 'ADD',
             follow: player,
+            followOffset: {x: 0, y: 30},
             deathZone: { type: 'onLeave', source: square }
         });
 
@@ -154,18 +127,11 @@ update () {
     var config = this.game.config;
     this.model = this.sys.game.globals.model; 
 
-    if (gameOver)
-    {
-        return;
-    }
 
-
-    //circle.setPosition(player.x, player.y);
-    //triangle.setTo(player.x, player.y, player.x-trilength, player.y+trilength, player.x+trilength, player.y+trilength);
-    square.setPosition(player.x-trilength, player.y);
+    square.setPosition(player.x-trilength, player.y+30);
 
     //  Scroll the background
-    starfield.tilePositionY -= 2;
+    background.tilePositionY -= 1;
 
     planets.children.iterate(function(planet){
         if (planet.y > 600) {
@@ -173,6 +139,9 @@ update () {
         }
         if (score > 20) {
             planet.setVelocityY(gameSpeed+100);
+        }
+        if (score > 50) {
+            planet.setVelocityY(gameSpeed+200);
         }
     });
 
@@ -186,8 +155,8 @@ update () {
         if (hole.y > 600) {
             hole.y = Phaser.Math.Between(-1000, 0);
             hole.x = Phaser.Math.Between(0, 700);
-
         }
+        hole.setCircle(26);
     });
 
 
@@ -224,7 +193,6 @@ update () {
 
         //player.anims.play('turn');
     }
-
 }
 };
 
@@ -242,16 +210,15 @@ function collectAstro (player, astro)
 
 function hitHole (player, hole)
 {
+    var config = this.game.config;
     this.physics.pause();
 
     player.setTint(0xff0000);
 
-    //player.anims.play('turn');
-
-    gameOver = true;
-
-    //var popup = this.add.image(config.width/2, config.height/2, 'planet')
-    //this.add.text(config.width/4 + 10, config.height*0.2, 'Civilisation has crumbled', { fontSize: '25px', fill: '#000' });
+    var popup = this.add.image(config.width/2, config.height/2, 'planet4')
+    this.add.text(config.width/4 + 10, config.height*0.2, 'You died, Your score was ' + score, { fontSize: '25px', fill: '#000' });
+    var menuButton = new Button(this, 400, 500, 'Button', 'ButtonPressed', 'Menu', 'Title');
+    score = 0;
 }
 
 

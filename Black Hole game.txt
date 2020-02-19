@@ -52,3 +52,12 @@ Make our own sprite of the black hole!
 black could expand or change colour slightly
 
 or classic cartoon black hole?
+
+
+TODO:
+Make it go faster at higher points- playtesting
+Add background for Title page
+Particle effects for rocket
+
+Add ship naming screen
+add gravity to black holes
