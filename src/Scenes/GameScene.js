@@ -3,6 +3,7 @@ import Button from '../Objects/Button';
 
 var player;
 var stars;
+var astros;
 var cursors;
 var score = 0;
 var gameOver = false;
@@ -32,8 +33,6 @@ export default class GameScene extends Phaser.Scene {
         this.model = this.sys.game.globals.model;
 
 
-        
-
         //  The scrolling starfield background
         starfield = this.add.tileSprite(400, 300, 800, 600, 'background');
 
@@ -57,30 +56,31 @@ export default class GameScene extends Phaser.Scene {
         // var MenuButtonText = this.add.text(config.width*0.2, config.height-70, 'Menu', { fontSize: '32px', fill: '#000' });
     
     // The player and its settings
-    player = this.physics.add.sprite(500, 450, 'dude');
+    //player = this.physics.add.sprite(500, 450, 'dude');
+    player = this.physics.add.image(500, 450, 'rocket');
 
     player.setCollideWorldBounds(true);
 
     //  Player animations, turning, walking left and walking right.
-    this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
+    // this.anims.create({
+    //     key: 'left',
+    //     frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+    //     frameRate: 10,
+    //     repeat: -1
+    // });
 
-    this.anims.create({
-        key: 'turn',
-        frames: [ { key: 'dude', frame: 4 } ],
-        frameRate: 20
-    });
+    // this.anims.create({
+    //     key: 'turn',
+    //     frames: [ { key: 'dude', frame: 4 } ],
+    //     frameRate: 20
+    // });
 
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-        frameRate: 10,
-        repeat: -1
-    });
+    // this.anims.create({
+    //     key: 'right',
+    //     frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+    //     frameRate: 10,
+    //     repeat: -1
+    // });
 
     //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
@@ -89,8 +89,8 @@ export default class GameScene extends Phaser.Scene {
     gameSpeed = 200;
 
     //  Create stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
-    stars = this.physics.add.group({
-        key: 'star',
+    astros = this.physics.add.group({
+        key: 'astro',
         repeat: 11,
         setXY: { x: 12, y: 0, stepX: 70 , stepY: 70},
         velocityY: gameSpeed
@@ -138,8 +138,8 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(player, planets);
 
 
-    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    this.physics.add.overlap(player, stars, collectStar, null, this);
+    //  Checks to see if the player overlaps with any of the astros, if he does call the collectAstro function
+    this.physics.add.overlap(player, astros, collectAstro, null, this);
 
     this.physics.add.collider(player, blackHoles, hitHole, null, this);
 
@@ -176,9 +176,9 @@ update () {
         }
     });
 
-    stars.children.iterate(function(star){
-        if (star.y > 600) {
-            star.y = Phaser.Math.Between(-1000, 0);
+    astros.children.iterate(function(astro){
+        if (astro.y > 600) {
+            astro.y = Phaser.Math.Between(-1000, 0);
         }
     });
 
@@ -195,19 +195,19 @@ update () {
     {
         player.setVelocityX(-160);
 
-        player.anims.play('left', true);
+        //player.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
         player.setVelocityX(160);
 
-        player.anims.play('right', true);
+        //player.anims.play('right', true);
     }
     else
     {
         player.setVelocityX(0);
 
-        player.anims.play('turn');
+        //player.anims.play('turn');
     }
 
     if (cursors.up.isDown)
@@ -222,17 +222,17 @@ update () {
     {
         player.setVelocityY(0);
 
-        player.anims.play('turn');
+        //player.anims.play('turn');
     }
 
 }
 };
 
 
-function collectStar (player, star)
+function collectAstro (player, astro)
 {
-    //star.disableBody(true, true);
-    star.y = Phaser.Math.Between(-1000, 0);
+    //astro.disableBody(true, true);
+    astro.y = Phaser.Math.Between(-1000, 0);
 
     //  Add and update the score
     score += 10;
@@ -246,7 +246,7 @@ function hitHole (player, hole)
 
     player.setTint(0xff0000);
 
-    player.anims.play('turn');
+    //player.anims.play('turn');
 
     gameOver = true;
 

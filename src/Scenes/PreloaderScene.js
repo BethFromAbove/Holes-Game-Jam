@@ -85,13 +85,23 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.audio('bgMusic', ['assets/BitQuest.mp3']);
 
         this.load.image('rocketFire', 'assets/RocketFire.png');
-        this.load.image('ground', 'assets/platform.png');
         this.load.image('star', 'assets/star.png');
-        this.load.image('hole', 'assets/blackHole.png');
+        this.load.image('astro', 'assets/astro.png');
+        this.load.image('hole', 'assets/blackhole.png');
         this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.image('rocket', 'assets/rocket1.png');
 
         this.load.image('background', 'assets/BackgroundTemp.png');
         this.load.image('planet', 'assets/planet.png');
+        this.load.image('planet1', 'assets/planet1.png');
+        this.load.image('planet2', 'assets/planet2.png');
+        this.load.image('planet3', 'assets/planet3.png');
+        this.load.image('planet4', 'assets/planet4.png');
+        this.load.image('planet5', 'assets/planet5.png');
+        this.load.image('planet6', 'assets/planet6.png');
+        this.load.image('planet7', 'assets/planet7.png');
+        this.load.image('planet8', 'assets/planet8.png');
+
 
         // remove progress bar when complete
         this.load.on('complete', function () {
