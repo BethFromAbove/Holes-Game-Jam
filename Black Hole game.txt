@@ -42,6 +42,9 @@ Highscore leader board
 Choose rocket colour
 make points look clock font
 
+Name the ship
+Pick a colour
+
 Could make both quite easily!
 
 Use actual picture of black hole!
