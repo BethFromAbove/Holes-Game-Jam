@@ -19,6 +19,7 @@ var trilength;
 var square;
 
 var gameSpeed;
+var playerSpeed;
 
 export default class GameScene extends Phaser.Scene {
     constructor () {
@@ -36,10 +37,10 @@ export default class GameScene extends Phaser.Scene {
         background = this.add.tileSprite(400, 300, 801, 4046, 'background');
 
 
-        
+    
     
     // The player and its settings
-    player = this.physics.add.image(500, 450, 'rocket');
+    player = this.physics.add.image(500, 450, 'rocket1');
 
     player.setCollideWorldBounds(true);
 
@@ -48,27 +49,28 @@ export default class GameScene extends Phaser.Scene {
     cursors = this.input.keyboard.createCursorKeys();
 
 
-    gameSpeed = 200;
+    gameSpeed = 50;
+    playerSpeed = 200;
 
     //  Create stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     astros = this.physics.add.group({
         key: 'astro',
         repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 70 , stepY: 70},
-        velocityY: gameSpeed
+        setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(20, 100) , stepY: Phaser.Math.Between(-200, 500)},
+        velocityY: gameSpeed*2
     });
 
     planets = this.physics.add.group();
 
-    planets.create(150, 0, 'planet');    
-    planets.create(100, 0, 'planet1');
-    planets.create(200, 0, 'planet2');
-    planets.create(300, 0, 'planet3');
-    planets.create(400, 0, 'planet4');
-    planets.create(500, 0, 'planet5');
-    planets.create(600, 0, 'planet6');
-    planets.create(700, 0, 'planet7');
-    planets.create(800, 0, 'planet8');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet');    
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet1');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet2');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet3');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet4');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet5');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet6');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet7');
+    planets.create(Phaser.Math.Between(-50, 750), Phaser.Math.Between(-1000, 0), 'planet8');
 
 
     planets.children.iterate(function(planet){
@@ -117,10 +119,6 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(player, blackHoles, hitHole, null, this);
 
-    //this.cameras.main.setBounds(0, 0, 50, 50);
-
-    // this.cameras.main.startFollow(player, true);
-    // this.cameras.main.setZoom(1);
 
 }
 
@@ -137,18 +135,21 @@ update () {
     planets.children.iterate(function(planet){
         if (planet.y > 600) {
             planet.y = Phaser.Math.Between(-1000, 0);
-        }
-        if (score > 20) {
-            planet.setVelocityY(gameSpeed+100);
+            planet.x = Phaser.Math.Between(-50, 750);
         }
         if (score > 50) {
-            planet.setVelocityY(gameSpeed+200);
+            planet.setVelocityY(gameSpeed+100);
+        }
+        if (score > 100) {
+            planet.setVelocityY(gameSpeed+100);
         }
     });
 
     astros.children.iterate(function(astro){
         if (astro.y > 600) {
             astro.y = Phaser.Math.Between(-1000, 0);
+            astro.x = Phaser.Math.Between(-50, 750);
+
         }
     });
 
@@ -163,13 +164,13 @@ update () {
 
     if (cursors.left.isDown)
     {
-        player.setVelocityX(-160);
+        player.setVelocityX(-playerSpeed);
 
         //player.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
-        player.setVelocityX(160);
+        player.setVelocityX(playerSpeed);
 
         //player.anims.play('right', true);
     }
@@ -182,11 +183,11 @@ update () {
 
     if (cursors.up.isDown)
     {
-        player.setVelocityY(-160);
+        player.setVelocityY(-playerSpeed);
     }
     else if (cursors.down.isDown)
     {
-        player.setVelocityY(160);
+        player.setVelocityY(playerSpeed);
     }
     else
     {

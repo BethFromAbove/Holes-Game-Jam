@@ -88,10 +88,13 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.image('star', 'assets/star.png');
         this.load.image('astro', 'assets/astro.png');
         this.load.image('hole', 'assets/blackhole.png');
-        this.load.image('rocket', 'assets/rocket1.png');
         this.load.image('menuBG', 'assets/menubackground.png');
         this.load.image('aboutBG', 'assets/AboutPage.png');
 
+        this.load.image('rocket1', 'assets/rocket1.png');
+        this.load.image('rocket2', 'assets/rocket2.png');
+        this.load.image('rocket3', 'assets/rocket3.png');
+        this.load.image('rocket4', 'assets/rocket4.png');
 
 
         this.load.image('background', 'assets/gamebackground.png');

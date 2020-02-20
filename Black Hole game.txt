@@ -58,12 +58,36 @@ TODO:
 Make it go faster at higher points- playtesting
 Start slower, have astros be slightly faster than planets
 more blackholes - as you go through game
-Space out planets randomly - fewer planets to start out with
 Particle effects for rocket - make red and nice
 Track individual high scores
 better game endscreen - add logo
+
 
 Stretch goal
 Add ship naming screen
 choose colour
 add gravity to black holes (make some more pngs for black holes to grow)
+Add sound effects?
+
+Done:
+Name it!
+Pick Background music
+Space out planets randomly - fewer planets to start out with
+
+
+Name ideas:
+Black Hole escape
+Astroman rescue
+Into the singularity
+Event horizons
+Spaghettifying
+Black Hole calamaty
+Space Holes
+Astropeeps in space
+Astrodudes
+Save the astros
+Very realistic space training simulator
+In space, no one can hear you fall into a black hole
+
+Are your crew always fallng out of airlocks or clumsy on spacewalks?
+Experts at saving stranded astronaughts
