@@ -95,6 +95,14 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.image('rocket2', 'assets/rocket2.png');
         this.load.image('rocket3', 'assets/rocket3.png');
         this.load.image('rocket4', 'assets/rocket4.png');
+        this.load.image('bigRocket1', 'assets/rocket1v4.png');
+        this.load.image('bigRocket2', 'assets/rocket2v4.png');
+        this.load.image('bigRocket3', 'assets/rocket3v4.png');
+        this.load.image('bigRocket4', 'assets/rocket4v4.png');
+        this.load.image('checkedRocket1', 'assets/rocket1v4checked.png');
+        this.load.image('checkedRocket2', 'assets/rocket2v4checked.png');
+        this.load.image('checkedRocket3', 'assets/rocket3v4checked.png');
+        this.load.image('checkedRocket4', 'assets/rocket4v4checked.png');
 
 
         this.load.image('background', 'assets/gamebackground.png');

@@ -3,7 +3,7 @@ export default class Model {
         this._soundOn = true;
         this._musicOn = true;
         this._bgMusicPlaying = false;
-        this._money = 0;
+        this._rocket = 1;
     }
     
     set musicOn(value) {
@@ -30,12 +30,12 @@ export default class Model {
         return this._bgMusicPlaying;
     }
 
-    set money(value) {
-        this._money = value;
+    set rocket(value) {
+        this._rocket = value;
     }
 
-    get money() {
-        return this._money;
+    get rocket() {
+        return this._rocket;
     }
 
     

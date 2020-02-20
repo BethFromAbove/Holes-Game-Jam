@@ -40,7 +40,17 @@ export default class GameScene extends Phaser.Scene {
     
     
     // The player and its settings
-    player = this.physics.add.image(500, 450, 'rocket1');
+    //player = this.physics.add.image(500, 450, 'rocket1');
+
+
+    // if (this.model.rocket == 1) {
+    //     player = this.physics.add.image(500, 450, 'rocket1');
+    // }
+
+    //Gets appropriate rocket color
+    player = this.physics.add.image(500, 450, 'rocket' + this.model.rocket);
+
+
 
     player.setCollideWorldBounds(true);
 
@@ -56,7 +66,7 @@ export default class GameScene extends Phaser.Scene {
     astros = this.physics.add.group({
         key: 'astro',
         repeat: 11,
-        setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(20, 100) , stepY: Phaser.Math.Between(-200, 500)},
+        setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(0, 300) , stepY: Phaser.Math.Between(-200, 500)},
         velocityY: gameSpeed*2
     });
 

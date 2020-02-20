@@ -13,34 +13,57 @@ export default class RocketSelectScene extends Phaser.Scene {
 
         this.add.image(config.width/2, config.height/2, 'aboutBG');
 
-        this.Titletext = this.add.text(300, 100, 'Rocket select', { fontSize: 40 , fill: '#000'});
+        this.Titletext = this.add.text(250, 100, 'Rocket Select', { fontSize: 40 , fill: '#000'});
         
-        var rocket1 = this.add.image(config.width*0.2, config.height/2, 'rocket1');
-        var rocket2 = this.add.image(config.width*0.4, config.height/2, 'rocket2');
-        var rocket3 = this.add.image(config.width*0.6, config.height/2, 'rocket3');
-        var rocket4 = this.add.image(config.width*0.8, config.height/2, 'rocket4');
+        this.checkedrocket2 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket2');
+        this.checkedrocket3 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket3');
+        this.checkedrocket4 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket4');
+        this.rocket1 = this.add.image(config.width*0.2, config.height/2, 'bigRocket1');
+        this.rocket2 = this.add.image(config.width*0.4, config.height/2, 'bigRocket2');
+        this.rocket3 = this.add.image(config.width*0.6, config.height/2, 'bigRocket3');
+        this.rocket4 = this.add.image(config.width*0.8, config.height/2, 'bigRocket4');
+        this.checkedrocket1 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket1');
 
-        //rocket1.scale = 2;
 
-        //this.Rocket1Button = this.add.image(200, 200, 'checkedBox');
-        //this.Rocket1Text = this.add.text(250, 190, 'Rocket 1', { fontSize: 24 , fill: '#000'});
+        this.rocket1.setInteractive();
+        this.rocket2.setInteractive();
+        this.rocket3.setInteractive();
+        this.rocket4.setInteractive();
 
+        this.rocket1.on('pointerdown', function () {
+            this.uncheckAll();
+            this.model.rocket = 1;
+            this.checkedrocket1 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket1');
+        }.bind(this));
 
-        // this.Rocket1Button.setInteractive();
+        this.rocket2.on('pointerdown', function () {
+            this.uncheckAll();
+            this.model.rocket = 2;
+            this.checkedrocket2 = this.add.image(config.width*0.4, config.height/2, 'checkedRocket2');
+        }.bind(this));
 
-        // this.Rocket1Button.on('pointerdown', function () {
-        //     this.model.musicOn = !this.model.musicOn;
-        //     this.updateAudio();
-        // }.bind(this));
+        this.rocket3.on('pointerdown', function () {
+            this.uncheckAll();
+            this.model.rocket = 3;
+            this.checkedrocket3 = this.add.image(config.width*0.6, config.height/2, 'checkedRocket3');
+        }.bind(this));
 
-        // this.soundButton.on('pointerdown', function () {
-        //     this.model.soundOn = !this.model.soundOn;
-        //     this.updateAudio();
-        // }.bind(this));
+        this.rocket4.on('pointerdown', function () {
+            this.uncheckAll();
+            this.model.rocket = 4;
+            this.checkedrocket4 = this.add.image(config.width*0.8, config.height/2, 'checkedRocket4');
+        }.bind(this));
 
-        this.menuButton = new Button(this, 400, 500, 'Button', 'ButtonPressed', 'Menu', 'Title');
-        this.playButton = new Button(this, 400, 200, 'Button', 'ButtonPressed', 'Play', 'Game');
+        this.menuButton = new Button(this, 250, 500, 'Button', 'ButtonPressed', 'Menu', 'Title');
+        this.playButton = new Button(this, 570, 500, 'Button', 'ButtonPressed', 'Play', 'Game');
 
+    }
+
+    uncheckAll(){
+        this.checkedrocket1.destroy();
+        this.checkedrocket2.destroy();
+        this.checkedrocket3.destroy();
+        this.checkedrocket4.destroy();
     }
 
     
