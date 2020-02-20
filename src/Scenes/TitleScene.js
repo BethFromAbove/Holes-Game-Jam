@@ -14,7 +14,7 @@ export default class TitleScene extends Phaser.Scene {
 
         this.add.image(config.width/2, config.height/2, 'menuBG');
 
-        this.add.image(config.width*0.3, config.height/2, 'Logo2');
+        this.add.image(config.width*0.3, config.height/2, 'Logo');
         //this.add.image(config.width*0.2, config.height*0.1, 'LogoTitle');
 
         // Game - Head to Rocket Select page
