@@ -79,6 +79,9 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.image('box', 'assets/planet6.png');
         this.load.image('checkedBox', 'assets/checked1.png');
         this.load.image('Logo', 'assets/logo.png');
+        this.load.image('Logo2', 'assets/logo3.png');
+        this.load.image('LogoTitle', 'assets/Title.jpeg');
+
         
 
         this.load.audio('bgMusic', ['assets/BitQuest.mp3']);
@@ -91,6 +94,7 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.image('hole', 'assets/blackhole.png');
         this.load.image('menuBG', 'assets/menubackground.png');
         this.load.image('aboutBG', 'assets/AboutPage.png');
+        this.load.image('deathScene', 'assets/deathScene.png');
 
         this.load.image('rocket1', 'assets/rocket1.png');
         this.load.image('rocket2', 'assets/rocket2.png');

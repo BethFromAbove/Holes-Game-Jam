@@ -58,14 +58,11 @@ TODO:
 Make it go faster at higher points- playtesting
 Start slower, have astros be slightly faster than planets
 more blackholes - as you go through game
-Particle effects for rocket - make red and nice
 Track individual high scores
-better game endscreen - add logo
 
 
 Stretch goal
 Add ship naming screen
-choose colour
 add gravity to black holes (make some more pngs for black holes to grow)
 Add sound effects?
 
@@ -73,6 +70,9 @@ Done:
 Name it!
 Pick Background music
 Space out planets randomly - fewer planets to start out with
+Particle effects for rocket - make red and nice
+choose colour
+better game endscreen - add logo
 
 
 Name ideas:

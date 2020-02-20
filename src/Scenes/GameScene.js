@@ -38,8 +38,8 @@ export default class GameScene extends Phaser.Scene {
         background = this.add.tileSprite(400, 300, 801, 4046, 'background');
 
 
-    
-    
+
+
     // The player and its settings
     //player = this.physics.add.image(500, 450, 'rocket1');
 
@@ -51,7 +51,7 @@ export default class GameScene extends Phaser.Scene {
     //Gets appropriate rocket color
     player = this.physics.add.image(500, 450, 'rocket' + this.model.rocket);
 
-
+    //player.body.isCircle = true;
 
     player.setCollideWorldBounds(true);
 
@@ -85,9 +85,12 @@ export default class GameScene extends Phaser.Scene {
 
 
     planets.children.iterate(function(planet){
+        planet.body.isCircle = true;
         planet.body.immovable = true;
         planet.setVelocityY(gameSpeed);
-        //planet.setCircle(44);
+        //planet.body.setCircle(planet.body.halfWidth);
+        console.log(planet.body.halfWidth);
+        console.log(planet.body.isCircle);
     });
     
     blackHoles = this.physics.add.group({
@@ -97,6 +100,10 @@ export default class GameScene extends Phaser.Scene {
         velocityY: gameSpeed/2
 
     });
+
+    // blackHoles.children.iterate(function(hole){
+    //     hole.body.setCircle(26);
+    // })
     
     trilength = 50;
     square = new Phaser.Geom.Rectangle(player.x-trilength, player.y+30, trilength*2, trilength*2);
@@ -104,34 +111,34 @@ export default class GameScene extends Phaser.Scene {
     var particles = this.add.particles('spark2');
 
 
-        emitter = particles.createEmitter({
-            angle: { min: -10, max: 180 },
-            speed: 25,
-            gravityY: 100,
-            lifespan: 500,
-            quantity: 2,
-            scale: { start: 0.09, end: 0.1 },
-            blendMode: 'ADD',
-            follow: player,
-            followOffset: {x: 0, y: 30},
-            deathZone: { type: 'onLeave', source: square }
-        });
+    emitter = particles.createEmitter({
+        angle: { min: -10, max: 180 },
+        speed: 25,
+        gravityY: 100,
+        lifespan: 500,
+        quantity: 2,
+        scale: { start: 0.09, end: 0.1 },
+        blendMode: 'ADD',
+        follow: player,
+        followOffset: {x: 0, y: 30},
+        deathZone: { type: 'onLeave', source: square }
+    });
 
-        var particlesTwo = this.add.particles('spark1');
+    var particlesTwo = this.add.particles('spark1');
     
 
-        emitterTwo = particlesTwo.createEmitter({
-            angle: { min: -10, max: 180 },
-            speed: 25,
-            gravityY: 100,
-            lifespan: 400,
-            quantity: 1,
-            scale: { start: 0.09, end: 0.1 },
-            blendMode: 'ADD',
-            follow: player,
-            followOffset: {x: 0, y: 30},
-            deathZone: { type: 'onLeave', source: square }
-        });
+    emitterTwo = particlesTwo.createEmitter({
+        angle: { min: -10, max: 180 },
+        speed: 25,
+        gravityY: 100,
+        lifespan: 400,
+        quantity: 1,
+        scale: { start: 0.09, end: 0.1 },
+        blendMode: 'ADD',
+        follow: player,
+        followOffset: {x: 0, y: 30},
+        deathZone: { type: 'onLeave', source: square }
+    });
 
     
 
@@ -165,11 +172,12 @@ update () {
             planet.y = Phaser.Math.Between(-1000, 0);
             planet.x = Phaser.Math.Between(-50, 750);
         }
+        planet.setVelocityY(gameSpeed);
         if (score > 50) {
             planet.setVelocityY(gameSpeed+100);
         }
         if (score > 100) {
-            planet.setVelocityY(gameSpeed+100);
+            planet.setVelocityY(gameSpeed+200);
         }
     });
 
@@ -186,7 +194,7 @@ update () {
             hole.y = Phaser.Math.Between(-1000, 0);
             hole.x = Phaser.Math.Between(0, 700);
         }
-        hole.setCircle(26);
+        //hole.setCircle(26);
     });
 
 
@@ -245,10 +253,19 @@ function hitHole (player, hole)
 
     player.setTint(0xff0000);
 
-    var popup = this.add.image(config.width/2, config.height/2, 'planet4')
-    this.add.text(config.width/4 + 10, config.height*0.2, 'You died, Your score was ' + score, { fontSize: '25px', fill: '#000' });
-    var menuButton = new Button(this, 400, 500, 'Button', 'ButtonPressed', 'Menu', 'Title');
-    score = 0;
+    var timer = this.time.delayedCall(1000, function(){
+        var popup = this.add.image(config.width/2, config.height/2, 'deathScene')
+        this.add.text(355, 410, score, { fontSize: '80px', fill: '#FFF' });
+        var menuButton = new Button(this, 200, 550, 'Button', 'ButtonPressed', 'Menu', 'Title');
+        var playButton = new Button(this, 600, 550, 'Button', 'ButtonPressed', 'Play Again', 'Game');
+
+        score = 0;
+
+
+    }, [], this);  // delay in ms
+
+
+    
 }
 
 

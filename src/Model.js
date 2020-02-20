@@ -4,6 +4,7 @@ export default class Model {
         this._musicOn = true;
         this._bgMusicPlaying = false;
         this._rocket = 1;
+        this._highscore = 0;
     }
     
     set musicOn(value) {
