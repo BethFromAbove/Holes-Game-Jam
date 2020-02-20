@@ -84,7 +84,8 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.audio('bgMusic', ['assets/BitQuest.mp3']);
 
         this.load.image('rocketFire', 'assets/RocketFire.png');
-        this.load.image('bluedot', 'assets/bluedot.png');
+        this.load.image('spark1', 'assets/spark1.png');
+        this.load.image('spark2', 'assets/spark2.png');
         this.load.image('star', 'assets/star.png');
         this.load.image('astro', 'assets/astro.png');
         this.load.image('hole', 'assets/blackhole.png');

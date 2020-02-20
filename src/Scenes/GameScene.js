@@ -14,6 +14,7 @@ var blackHoles;
 var background;
 
 var emitter;
+var emitterTwo;
 var menuButton;
 var trilength;
 var square;
@@ -100,15 +101,32 @@ export default class GameScene extends Phaser.Scene {
     trilength = 50;
     square = new Phaser.Geom.Rectangle(player.x-trilength, player.y+30, trilength*2, trilength*2);
 
-    var particles = this.add.particles('bluedot');
+    var particles = this.add.particles('spark2');
+
 
         emitter = particles.createEmitter({
-            angle: { min: 0, max: 180 },
-            speed: 10,
+            angle: { min: -10, max: 180 },
+            speed: 25,
             gravityY: 100,
             lifespan: 500,
             quantity: 2,
-            scale: { start: 0.05, end: 0.1 },
+            scale: { start: 0.09, end: 0.1 },
+            blendMode: 'ADD',
+            follow: player,
+            followOffset: {x: 0, y: 30},
+            deathZone: { type: 'onLeave', source: square }
+        });
+
+        var particlesTwo = this.add.particles('spark1');
+    
+
+        emitterTwo = particlesTwo.createEmitter({
+            angle: { min: -10, max: 180 },
+            speed: 25,
+            gravityY: 100,
+            lifespan: 400,
+            quantity: 1,
+            scale: { start: 0.09, end: 0.1 },
             blendMode: 'ADD',
             follow: player,
             followOffset: {x: 0, y: 30},
