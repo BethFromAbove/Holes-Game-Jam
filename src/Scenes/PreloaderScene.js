@@ -77,14 +77,13 @@ export default class PreloaderScene extends Phaser.Scene {
         this.load.image('Button', 'assets/silverbutton.png');
         this.load.image('ButtonPressed', 'assets/silverbuttonpressed.png');
         this.load.image('box', 'assets/planet6.png');
+        this.load.image('boxTwo', 'assets/planet8.png');
         this.load.image('checkedBox', 'assets/checked1.png');
-        this.load.image('Logo', 'assets/logo.png');
-        this.load.image('Logo2', 'assets/logo3.png');
-        this.load.image('LogoTitle', 'assets/Title.jpeg');
-
+        this.load.image('checkedBoxTwo', 'assets/checked2.png');
+        this.load.image('Logo', 'assets/logo3.png');
         
 
-        this.load.audio('bgMusic', ['assets/BitQuest.mp3']);
+        this.load.audio('bgMusic', ['assets/Komiku_-_07_-_Run_against_the_universe.mp3']);
 
         this.load.image('rocketFire', 'assets/RocketFire.png');
         this.load.image('spark1', 'assets/spark1.png');

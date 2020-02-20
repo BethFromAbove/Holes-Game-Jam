@@ -27,6 +27,18 @@ export default class GameScene extends Phaser.Scene {
         super('Game');
     }
 
+    addBlackHole(){
+        var blackHole = this.physics.add.sprite(
+            Phaser.Math.Between(0, 700), 
+            Phaser.Math.Between(-1000, 0), 
+            'hole'
+        );
+
+        blackHoles.add(blackHole);
+
+    }
+
+
 
     create () {
 
@@ -105,6 +117,9 @@ export default class GameScene extends Phaser.Scene {
     //     hole.body.setCircle(26);
     // })
     
+
+
+
     trilength = 50;
     square = new Phaser.Geom.Rectangle(player.x-trilength, player.y+30, trilength*2, trilength*2);
 
@@ -188,6 +203,13 @@ update () {
 
         }
     });
+
+        if (blackHoles.getLength() < (score / 100)){
+
+            this.addBlackHole();
+
+        }
+
 
     blackHoles.children.iterate(function(hole){
         if (hole.y > 600) {
