@@ -160,14 +160,18 @@ export default class GameScene extends Phaser.Scene {
             }
             planet.setVelocityY(gameSpeed);
             if (score > 50) {
-                planet.setVelocityY(gameSpeed+100);
+                planet.setVelocityY(gameSpeed+50);
             }
-            if (score > 400) {
-                planet.setVelocityY(gameSpeed+200);
+            if (score > 200) {
+                planet.setVelocityY(gameSpeed+90);
+            }
+
+            if (score > 500) {
+                planet.setVelocityY(gameSpeed+150);
             }
 
             if (score > 700) {
-                planet.setVelocityY(gameSpeed+350);
+                planet.setVelocityY(gameSpeed+300);
             }
 
             if (score > 1000) {
