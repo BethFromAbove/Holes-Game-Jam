@@ -60,6 +60,10 @@ Start slower, have astros be slightly faster than planets
 more blackholes - as you go through game
 Track individual high scores
 
+Add highscore to game page
+add pulsing text end screen which says New High Score!!!
+Randomise black hole start
+
 
 Stretch goal
 Add ship naming screen

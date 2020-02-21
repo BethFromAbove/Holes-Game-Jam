@@ -74,8 +74,8 @@ export default class PreloaderScene extends Phaser.Scene {
         });
 
         // load assets needed in our game
-        this.load.image('Button', 'assets/silverbutton.png');
-        this.load.image('ButtonPressed', 'assets/silverbuttonpressed.png');
+        this.load.image('Button', 'assets/button1.png');
+        this.load.image('ButtonPressed', 'assets/button1selected.png');
         this.load.image('box', 'assets/planet6.png');
         this.load.image('boxTwo', 'assets/planet8.png');
         this.load.image('checkedBox', 'assets/checked1.png');

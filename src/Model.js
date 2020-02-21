@@ -39,5 +39,13 @@ export default class Model {
         return this._rocket;
     }
 
+    set highscore(value) {
+        this._highscore = value;
+    }
+
+    get highscore() {
+        return this._highscore;
+    }
+
     
 }

@@ -228,6 +228,8 @@ function collectAstro (player, astro)
 function hitHole (player, hole)
 {
     var config = this.game.config;
+    this.model = this.sys.game.globals.model; 
+
     this.physics.pause();
 
     player.setTint(0xff0000);
@@ -237,6 +239,13 @@ function hitHole (player, hole)
         this.add.text(355, 410, score, { fontSize: '80px', fill: '#FFF' });
         var menuButton = new Button(this, 200, 550, 'Button', 'ButtonPressed', 'Menu', 'Title');
         var playButton = new Button(this, 600, 550, 'Button', 'ButtonPressed', 'Play Again', 'Game');
+        // console.log(score);
+        // console.log(this.model.highscore);       
+
+        if (score > this.model.highscore) {
+            this.model.highscore = score;
+            this.add.text(10, 10, 'New High Score!!!', { fontSize: '80px', fill: '#FFF' }); 
+        }
 
         score = 0;
     }, [], this);  // delay in ms 
