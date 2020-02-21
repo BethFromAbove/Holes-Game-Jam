@@ -202,7 +202,7 @@ export default class GameScene extends Phaser.Scene {
 
         blackHoles.children.iterate(function(hole){
             if (hole.y > 600) {
-                hole.y = Phaser.Math.Between(-800, 0);
+                hole.y = Phaser.Math.Between(-50, 0);
                 hole.x = Phaser.Math.Between(0, 700);
             }
             //hole.setCircle(26);
@@ -261,12 +261,11 @@ function hitHole (player, hole)
         this.add.text(355, 410, score, { fontSize: '80px', fill: '#FFF' });
         var menuButton = new Button(this, 200, 550, 'Button', 'ButtonPressed', 'Menu', 'Title');
         var playButton = new Button(this, 600, 550, 'Button', 'ButtonPressed', 'Play Again', 'Game');
-        // console.log(score);
-        // console.log(this.model.highscore);       
 
         if (score > this.model.highscore) {
             this.model.highscore = score;
-            this.add.text(10, 10, 'New High Score!!!', { fontSize: '80px', fill: '#FFF' }); 
+            var newhighscoretext = this.add.text(500, 290, 'New High Score!', { fontSize: '20px', fill: '#F9BE4F' });
+            newhighscoretext.angle = 35;
         }
 
         score = 0;
