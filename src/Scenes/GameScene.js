@@ -160,9 +160,26 @@ export default class GameScene extends Phaser.Scene {
             if (score > 50) {
                 planet.setVelocityY(gameSpeed+100);
             }
-            if (score > 100) {
+            if (score > 400) {
                 planet.setVelocityY(gameSpeed+200);
             }
+
+            if (score > 700) {
+                planet.setVelocityY(gameSpeed+350);
+            }
+
+            if (score > 1000) {
+                planet.setVelocityY(gameSpeed+500);
+            }
+
+            if (score > 1300) {
+                planet.setVelocityY(gameSpeed+700);
+            }
+
+            if (score > 1500) {
+                planet.setVelocityY(gameSpeed+800);
+            }
+
         });
 
         astros.children.iterate(function(astro){
@@ -170,7 +187,10 @@ export default class GameScene extends Phaser.Scene {
                 astro.y = Phaser.Math.Between(-1000, 0);
                 astro.x = Phaser.Math.Between(-50, 750);
             }
+
+        
         });
+
 
         if (blackHoles.getLength() < (score / 100)){
 
