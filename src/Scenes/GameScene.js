@@ -7,6 +7,7 @@ var astros;
 var cursors;
 var score = 0;
 var scoreText;
+var highscoreText;
 
 var planets;
 var blackHoles;
@@ -130,7 +131,8 @@ export default class GameScene extends Phaser.Scene {
         });
 
         //  The score
-        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#FFF' });
+        highscoreText = this.add.text(16, 16, 'Highscore: ' + this.model.highscore, { fontSize: '32px', fill: '#F9BE4F' });
+        scoreText = this.add.text(16, 46, 'score: 0', { fontSize: '32px', fill: '#FFF' });
 
         //  Collide the player and the stars with the planets
         this.physics.add.collider(player, planets);
