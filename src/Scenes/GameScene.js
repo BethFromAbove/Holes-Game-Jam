@@ -202,7 +202,7 @@ export default class GameScene extends Phaser.Scene {
 
         blackHoles.children.iterate(function(hole){
             if (hole.y > 600) {
-                hole.y = Phaser.Math.Between(-1000, 0);
+                hole.y = Phaser.Math.Between(-800, 0);
                 hole.x = Phaser.Math.Between(0, 700);
             }
             //hole.setCircle(26);
