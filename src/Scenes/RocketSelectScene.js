@@ -13,7 +13,7 @@ export default class RocketSelectScene extends Phaser.Scene {
 
         this.add.image(config.width/2, config.height/2, 'aboutBG');
 
-        this.Titletext = this.add.text(250, 100, 'Rocket Select', { fontSize: 40 , fill: '#000'});
+        this.Titletext = this.add.text(200, 100, 'Select your Rocket', { fontSize: 40 , fill: '#000'});
         
         this.checkedrocket2 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket2');
         this.checkedrocket3 = this.add.image(config.width*0.2, config.height/2, 'checkedRocket3');
