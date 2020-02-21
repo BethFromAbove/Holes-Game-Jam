@@ -54,8 +54,8 @@ export default class RocketSelectScene extends Phaser.Scene {
             this.checkedrocket4 = this.add.image(config.width*0.8, config.height/2, 'checkedRocket4');
         }.bind(this));
 
-        this.menuButton = new Button(this, 250, 500, 'Button', 'ButtonPressed', 'Menu', 'Title');
-        this.playButton = new Button(this, 570, 500, 'Button', 'ButtonPressed', 'Play', 'Game');
+        this.menuButton = new Button(this, 250, 480, 'Button', 'ButtonPressed', 'Menu', 'Title');
+        this.playButton = new Button(this, 570, 480, 'Button', 'ButtonPressed', 'Play', 'Game');
 
     }
 
